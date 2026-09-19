@@ -1,0 +1,123 @@
+@import '../abstracts/variables';
+
+.navbar {
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    &_logo{
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: $color-secondary;
+    }
+
+    &_links-list{
+        display: flex;
+        flex-direction: row;
+
+        &_item{ 
+            margin-right: 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+
+            &-link:hover{
+                color: $color-primary;
+            }
+        }
+    }
+
+    &_contact{
+        height: 30px;
+        width: 130px;
+        background-color: $color-background;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        border-color: $color-primary;
+        border-width: 2px;
+        border-style: solid;
+        font-size: 1.2rem;
+
+        & a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        &-icon {
+            font-size: 1.2rem;
+            color: $color-primary;
+            padding-right: 0.5rem;
+        }
+
+        &-text {
+            font-size: 1.2rem;
+            color: $color-primary;
+        }
+
+        &:hover &-text{
+            color: $color-background;
+        }
+
+        &:hover &-icon{
+            color: $color-background;
+
+        }
+
+        &:hover{
+            background-color: $color-primary;
+
+        }
+    }
+
+    &_menu {
+        display: none;
+        font-size: 1.5rem;
+        color: $color-primary;
+        cursor: pointer;
+    }
+
+    
+    &_menu_links {
+        display: none;
+        
+        &-list {
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            
+            &_item {
+                margin-bottom: 1rem;
+                font-size: 1.2rem;
+                font-weight: bold;
+                height: 2rem;
+                
+                &-link:hover {
+                    color: $color-primary;
+                }
+            }
+        }
+
+        &.active {
+            display: block;
+        }
+    }
+
+    @media (max-width: $breakpoint-md) {
+        &_links,
+        &_contact {
+            display: none;
+        }
+
+
+        &_menu {
+            display: block;
+        }
+    }
+
+   
+}
