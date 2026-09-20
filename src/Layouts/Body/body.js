@@ -1,10 +1,19 @@
 import React from "react";
-import HeroSection from "../../Components/HeroSection";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "../../Pages/homePage";    
+import ProjectPage from "../../Pages/projectPage";
+import AboutPage from "../../Pages/aboutPage";
+import ContactPage from "../../Pages/contactPage";
 
 const Body = () => {
     return (
         <main className="body_container">
-            <HeroSection/>
+            <Routes>
+                <Route path="/" element={<HomePage/>} />
+                <Route path="/projects" element={<ProjectPage/>} />
+                <Route path="/about" element={<AboutPage/>} />
+                <Route path="/contact" element={<ContactPage/>} />
+            </Routes>
         </main>
     );
 }
