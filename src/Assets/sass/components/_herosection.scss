@@ -1,0 +1,114 @@
+@use '../abstracts' as *;
+
+.heroSection {
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &_contentPart {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 50px;
+
+        &_greeting {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: $color-text;
+        }
+
+        &_title {
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: $color-primary;
+        }
+
+        &_description {
+            font-size: 1.25rem;
+            line-height: 1.5;
+            color: $color-text;
+            font-weight: 500;
+        }
+        
+        &_buttons {
+            margin-top: 30px;
+
+            &_contact, &_projects {
+                display: inline-block;
+                padding: 10px 20px;
+                font-size: 1rem;
+                font-weight: bold;
+                text-decoration: none;
+                border-radius: 5px;
+                margin-right: 10px;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+            &_contact {
+                background-color: $color-primary;
+                border: 1px solid $color-primary;
+                color: $color-background;
+
+                &:hover {
+                    background-color: darken($color-primary, 10%);
+                }
+            }
+
+            &_projects {
+                background-color: transparent;
+                color: $color-primary;
+                border: 1px solid $color-primary;
+
+                &:hover {
+                    background-color: $color-primary;
+                    color: $color-background;
+                }
+            }
+        }
+    }
+
+    &_imagePart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-border {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 2px solid $color-primary;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &_image {
+                width: 330px;
+                height: 330px;
+                border-radius: 50%;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-md) {
+        height: auto;
+        margin-top: 50px;
+        grid-template-columns: 1fr;
+        // padding: 50px 20px;
+
+        &_contentPart {
+            margin-bottom: 50px;
+
+        }
+    }
+
+}
