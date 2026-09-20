@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react";
 import { NavLink } from 'react-router-dom';
-import { navItems, portfolioTitle } from "../Components/const";
+import { navItems, navbarText } from "../Components/const";
 import { FaPhoneAlt, FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 
 
 const Navbar = () => {
+    const { brand, contact } = navbarText;
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleMenuToggle = () => {
@@ -34,7 +35,7 @@ const Navbar = () => {
         <>
             <nav className="navbar">
                 <NavLink to="/" className="navbar_logo">
-                    {portfolioTitle}
+                    {brand}
                 </NavLink>
 
                 {/* Navbar for Desktop and Tablet */}
@@ -79,7 +80,7 @@ const Navbar = () => {
                     ))}
                     <li className="navbar_menu_links-list_item">
                         <NavLink to="/contact" className="navbar_menu_links-list_item-link">
-                            Contact
+                            {contact}
                         </NavLink>
                     </li>
                 </ul>
