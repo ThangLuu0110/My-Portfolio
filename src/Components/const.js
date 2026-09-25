@@ -1,5 +1,6 @@
 import SalesforceDevILogo from '../Assets/images/SDP I logo.png';
 import SalesforceDevIILogo from '../Assets/images/SDP II logo.png';
+import { FaLinkedin, FaSalesforce, FaGithub } from "react-icons/fa";
 
 const navItems = [
     { name: "Home", path: "/" },
@@ -43,10 +44,20 @@ const informationCertificationList = [
     }
 ]
 
+const footerText = {
+    copyRight: 'Lưu Mạnh Thắng. All rights reserved.',
+    listSocial: [
+        {name: 'LinkedIn', icon: <FaLinkedin/>, link: 'https://www.linkedin.com/in/l%C6%B0u-m%E1%BA%A1nh-th%E1%BA%AFng-88b3b1257/' },
+        {name: 'Trailblazer', icon: <FaSalesforce/>, link: 'https://www.salesforce.com/trailblazer/thangluumanh' },
+        {name: 'Github', icon: <FaGithub/>, link: 'https://github.com/ThangLuu0110'}
+    ]
+}
+
 export { 
     navItems, 
     navbarText, 
     heroSectionText,
     aboutMeText,
-    informationCertificationList
+    informationCertificationList,
+    footerText
 };
