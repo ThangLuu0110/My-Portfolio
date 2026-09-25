@@ -1,0 +1,38 @@
+@use '../abstracts' as *;
+
+.footer-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    color: $color-secondary;
+    padding: 2rem 0;
+    
+    &_social {
+
+        &-list{
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            
+            &_item{
+
+                &-link{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 5px; 
+
+                    .icon {
+                        font-size: 1.3rem;
+                    }
+                    
+                    &:hover {
+                        color: $color-primary;
+                    }
+                }
+            }
+        }
+    }
+}
