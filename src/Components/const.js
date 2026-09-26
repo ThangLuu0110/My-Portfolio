@@ -19,6 +19,7 @@ const heroSectionText = {
 };
 
 const aboutMeText = {
+    quote: "Công việc hàng ngày chính là nền tảng của thi đua",
     aboutMeTitle: "My story",
     aboutMeDescription: [
         "I began my career in 2022 as a Front-End Developer at VTI Vietnam.",

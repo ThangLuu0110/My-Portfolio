@@ -8,7 +8,7 @@
     &_certificate {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
 
         &-title {
             font-size: 4rem;
@@ -18,15 +18,14 @@
 
         &-list {
             margin-top: 30px;
-            display: flex;
-            flex-direction: row;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
 
             &_item {
                 border: 2px solid $color-primary;
                 border-radius: 10px;
-                width: 400px;
                 padding: 1.5rem;
-                margin: 10px;
                 
                 &-title {
                     display: flex;
