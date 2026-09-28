@@ -19,6 +19,7 @@
         box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
         border-radius: 16px;
         position: relative;
+        background-color: #ffffff;
 
         &-active{
             width: 140px;
@@ -72,6 +73,7 @@
 
     @media (max-width: $breakpoint-md) {
         &_list {
+            position: fixed;
 
             &-active {
                 width: 50px;
