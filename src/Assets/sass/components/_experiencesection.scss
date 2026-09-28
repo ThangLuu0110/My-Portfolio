@@ -1,0 +1,98 @@
+@use '../abstracts' as *;
+
+.experienceSection {
+    margin: 50px 0;
+
+    &_title {
+        font-size: 54px;
+        font-weight: bold;
+        color: $color-primary;
+    }
+
+    &_detail {
+        margin-top: 20px;
+        padding: 10px 20px;
+
+        &_item {
+            display: grid;
+            grid-template-columns: 1fr 5fr;
+            font-size: 1.2rem;
+            color: $color-text;
+            font-weight: 400;
+            line-height: 30px;
+            margin-bottom: 50px;
+
+
+            &-period {
+                font-weight: bold;
+                
+            }
+
+            &-information {
+
+                &_title {
+                    font-weight: bold;
+
+                    .company {
+                        color: $color-primary;
+                        font-size: 1rem;
+                    }
+                }
+
+                &_technology {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    gap: 10px;
+                    
+                    &-tag {
+                        height: 20px;
+                        background-color:#6c757d;
+                        border-radius: 10px;
+                        color: #fff;
+                        font-size: 12px;
+                        font-weight: 700;
+                        line-height: 12px;
+                        padding: 4.2px 7.8px;
+                        text-align: center;
+                        line-height: 20px;
+                        margin-top: 10px;
+                    }
+                }
+
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-lg) {
+        &_detail {
+
+            &_item {
+                grid-template-columns: 1fr 4fr;
+            }
+            
+        }
+    }
+
+    @media (max-width: $breakpoint-md) {
+        &_detail {
+
+            &_item {
+                display: flex;
+                flex-direction: column;
+
+                &-period {
+                    margin-bottom: 10px;
+                }
+            }
+            
+        }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        &_title {
+            font-size: 44px;
+        }  
+    }
+    
+}

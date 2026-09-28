@@ -1,10 +1,12 @@
 import React from "react";
+import { aboutMeText } from '../Components/const';
 
 const AboutPage = () => {
     return (
-        <div>
-            <h1>About Page</h1>
-            <p>Welcome to the About Page!</p>
+        <div className="aboutPage">
+            <p className="aboutPage_title">{aboutMeText.aboutMeTitle}</p>
+            <p className="aboutPage_quote">{aboutMeText.quote}</p>
+            
         </div>
     )
 }

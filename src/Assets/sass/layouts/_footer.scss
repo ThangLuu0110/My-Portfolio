@@ -1,12 +1,13 @@
 @use '../abstracts' as *;
 
 .footer-container{
+    height: 55px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     font-size: 1.1rem;
     color: $color-secondary;
-    padding: 2rem 0;
     
     &_social {
 
@@ -34,5 +35,21 @@
                 }
             }
         }
+    }
+
+    @media (max-width: $breakpoint-md) {
+        flex-direction: column;
+        align-items: center;
+        height: 80px;
+        padding-top: 30px;
+        
+        &_social {
+            margin-top: 20px;
+        }
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+        font-size: .9rem;
+        
     }
 }

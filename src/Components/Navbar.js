@@ -1,91 +1,40 @@
-import React, {useState, useEffect} from "react";
+import React, { useState } from "react";
 import { NavLink } from 'react-router-dom';
-import { navItems, navbarText } from "../Components/const";
-import { FaPhoneAlt, FaBars } from "react-icons/fa";
-import { IoMdClose } from "react-icons/io";
+import { navItems } from "../Components/const";
+
 
 
 const Navbar = () => {
-    const { brand, contact } = navbarText;
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const handleMenuToggle = () => {
-        setIsMenuOpen(!isMenuOpen);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const handleMoveActiveBox = (index) => {
+        const activeBox = document.querySelector('.navbar_list-active');
+        const leftValue = `calc(10px + ${index}*10px + ${index}*calc((100% - 70px) / 6))`;
+        if(activeBox){
+            activeBox.style.left = leftValue;
+        }
     }
 
-    useEffect(() => {
-        // Keep in sync with $breakpoint-md in _variables.scss
-        const mediaQuery = window.matchMedia("(min-width: 768px)");
-
-        const handleBreakpointChange = (event) => {
-            if (event.matches) {
-                setIsMenuOpen(false);
-            }
-        };
-
-        if (mediaQuery.matches) {
-            setIsMenuOpen(false);
-        }
-
-        mediaQuery.addEventListener("change", handleBreakpointChange);
-        return () => mediaQuery.removeEventListener("change", handleBreakpointChange);
-    }, []);
-
     return (
-        <>
-            <nav className="navbar">
-                <NavLink to="/" className="navbar_logo">
-                    {brand}
-                </NavLink>
+        <nav className="navbar">
+            {/* Navbar for Desktop and Tablet */}
+            <ul className="navbar_list">
+                <div className="navbar_list-active"></div>
+                {navItems.map((item, index) => {
+                    const isActive = activeIndex === index;
 
-                {/* Navbar for Desktop and Tablet */}
-                <div className="navbar_links">
-                    <ul className="navbar_links-list">
-                        {navItems.map((item, index) => (
-                            <li key={index} className="navbar_links-list_item">
-                                <NavLink to={item.path} className="navbar_links-list_item-link">
-                                    {item.name}
-                                </NavLink>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                <div className="navbar_contact">
-                    <NavLink to="/contact">
-                        <FaPhoneAlt className="navbar_contact-icon" />
-                        <span className="navbar_contact-text">Contact</span>
-                    </NavLink>
-                </div>
-
-                <div className="navbar_menu" onClick={handleMenuToggle}>
-                    {isMenuOpen ? (
-                        <IoMdClose className="navbar_menu-icon" />
-                    ) : (
-                        <FaBars className="navbar_menu-icon" />
-                    )}
-                </div>
-
-                {/* Navbar for Mobile */}
-            </nav>
-
-            <div className={`navbar_menu_links ${isMenuOpen ? 'active' : ''}`}>
-                <ul className="navbar_menu_links-list">
-                    {navItems.map((item, index) => (
-                        <li key={index} className="navbar_menu_links-list_item">
-                            <NavLink to={item.path} className="navbar_menu_links-list_item-link">
-                                {item.name}
+                    return (
+                        <li key={index} className={`navbar_list-item ${isActive  ? "active" : ""}`} onClick={() => {
+                            setActiveIndex(index);
+                            handleMoveActiveBox(index);
+                        }}>
+                            <NavLink to={item.path} className="navbar_list-item_link" >
+                                <span className="icon">{item.icon}</span>
+                                <span className="text">{item.name}</span>
                             </NavLink>
-                        </li>
-                    ))}
-                    <li className="navbar_menu_links-list_item">
-                        <NavLink to="/contact" className="navbar_menu_links-list_item-link">
-                            {contact}
-                        </NavLink>
-                    </li>
-                </ul>
-            </div>
-        </>
+                        </li>);
+                })}
+            </ul>
+        </nav>
     );
 }
 

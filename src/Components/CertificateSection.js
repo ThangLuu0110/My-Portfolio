@@ -13,9 +13,9 @@ const CertificateSection = () => {
                                 <img src={item.certImage} alt="CertificateLogo" className='certificateSection_certificate-list_item-title_logo'></img>
                                 <p><span>{item.certName}</span><br/> <span className='date'>{item.certIssuedDate}</span></p>
                             </div>
-                            <div className="certificateSection_certificate-list_item-intro">
+                            {/* <div className="certificateSection_certificate-list_item-intro">
                                 {item.certIntro}
-                            </div>
+                            </div> */}
                         </li>
                     ))}
                 </ul>
