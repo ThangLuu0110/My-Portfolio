@@ -1,17 +1,19 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "../../Pages/homePage";    
-import ProjectPage from "../../Pages/projectPage";
-import AboutPage from "../../Pages/aboutPage";
-import ContactPage from "../../Pages/contactPage";
+import HeroSection from "../../Pages/HeroPage";    
+import ProjectPage from "../../Pages/ProjectPage";
+import AboutPage from "../../Pages/AboutPage";
+import ContactPage from "../../Pages/ContactPage";
+import ExperienceSection from "../../Pages/ExperiencePage"
 
 const Body = () => {
     return (
         <main className="body_container">
             <Routes>
-                <Route path="/" element={<HomePage/>} />
-                <Route path="/projects" element={<ProjectPage/>} />
+                <Route path="/" element={<HeroSection/>} />
                 <Route path="/about" element={<AboutPage/>} />
+                <Route path="/projects" element={<ProjectPage/>} />
+                <Route path="/experience" element={<ExperienceSection/>} />
                 <Route path="/contact" element={<ContactPage/>} />
             </Routes>
         </main>

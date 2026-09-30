@@ -1,13 +1,26 @@
 import SalesforceDevILogo from '../Assets/images/SDP I logo.png';
 import SalesforceDevIILogo from '../Assets/images/SDP II logo.png';
-import { FaLinkedin, FaSalesforce, FaGithub } from "react-icons/fa";
-import { GoHome, GoPerson, GoFileDirectory, GoArchive, GoDiscussionClosed, GoDeviceMobile } from "react-icons/go";
+import { 
+    FaLinkedin, 
+    FaSalesforce, 
+    FaGithub 
+} from "react-icons/fa";
+import { 
+    GoHome, 
+    GoPerson, 
+    GoFileDirectory, 
+    GoArchive, 
+    GoDiscussionClosed, 
+    GoDeviceMobile,
+    GoBriefcase  
+} from "react-icons/go";
 
 const navItems = [
     { name: "Home", path: "/", icon: <GoHome/> },
     { name: "About", path: "/about", icon: <GoPerson/> },
     { name: "Projects", path: "/projects", icon: <GoFileDirectory/> },
     { name: "Skills", path: "/skills", icon: <GoArchive/>},
+    { name: "Experience", path: "/experience", icon: <GoBriefcase />},
     { name: "Testimonials", path: "/testimonials", icon: <GoDiscussionClosed/>},
     { name: "Contact", path: "/contact", icon: <GoDeviceMobile/>}
 ];
