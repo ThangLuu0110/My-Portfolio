@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { NavLink, useLocation } from 'react-router-dom';
 import { navItems } from "../../Components/const";
-
+import { ThemeContext } from '../../Store/ThemeContext'; 
 
 const Header = () => {
+    const context = useContext(ThemeContext)
     const location = useLocation();
     const [activeIndex, setActiveIndex] = useState(0);
     const handleMoveActiveBox = (index) => {
@@ -54,24 +55,24 @@ const Header = () => {
         <header className="header_container">
             <nav className="navbar">
                 {/* Navbar for Desktop and Tablet */}
-                <ul className="navbar_list">
-                    <div className="navbar_list-active"></div>
+                <ul className={`navbar_list ${context.theme}`}>
+                    <div className={`navbar_list-active ${context.theme}`}></div>
                     {navItems.map((item, index) => {
                         const isActive = activeIndex === index;
 
                         return (
-                            <li key={index} className={`navbar_list-item ${isActive  ? "active" : ""}`} onClick={() => {
+                            <li key={index} className={`navbar_list-item ${isActive  ? "active" : ""} ${context.theme}`} onClick={() => {
                                 setActiveIndex(index);
                                 handleMoveActiveBox(index);
                             }}>
-                                <NavLink to={item.path} className="navbar_list-item_link" >
+                                <NavLink to={item.path} className={`navbar_list-item_link ${context.theme}`} >
                                     <span className="icon">{item.icon}</span>
                                     <span className="text">{item.name}</span>
                                 </NavLink>
                             </li>);
                     })}
                 </ul>
-            </nav>   
+            </nav>  
         </header>
     );
 }

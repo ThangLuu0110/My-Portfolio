@@ -7,7 +7,14 @@
     justify-content: space-between;
     align-items: center;
     font-size: 1.1rem;
-    color: $color-secondary;
+    width: 1300px;
+
+    &.light {
+        color: $color-secondary-light;
+    }
+    &.dark {
+        color: $color-secondary-dark;
+    }
     
     &_social {
 
@@ -23,14 +30,18 @@
                     flex-direction: row;
                     justify-content: space-between;
                     align-items: center;
-                    gap: 5px; 
+                    gap: 5px;
+
+                    .name.dark {
+                        color: $color-secondary-dark;
+                    }
 
                     .icon {
                         font-size: 1.3rem;
-                    }
-                    
-                    &:hover {
-                        color: $color-primary;
+                        
+                        &.dark {
+                            color: $color-secondary-dark;
+                        }
                     }
                 }
             }
@@ -38,6 +49,7 @@
     }
 
     @media (max-width: $breakpoint-md) {
+        width: 100%;
         flex-direction: column;
         align-items: center;
         height: 80px;
@@ -46,10 +58,5 @@
         &_social {
             margin-top: 20px;
         }
-    }
-    
-    @media (max-width: $breakpoint-sm) {
-        font-size: .9rem;
-        
     }
 }
