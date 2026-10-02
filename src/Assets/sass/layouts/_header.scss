@@ -1,5 +1,14 @@
 @use '../abstracts' as *;
 
+.header_container{
+    width: 1300px;
+
+    @media (max-width: $breakpoint-md) {
+        width: 100%;
+    }
+
+}
+
 .navbar {
     height: 65px;
     display: flex;
@@ -19,19 +28,33 @@
         box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
         border-radius: 16px;
         position: relative;
-        background-color: #ffffff;
+
+        &.light {
+            background-color: $color-background-light;
+        }
+
+        &.dark {
+            background-color: $color-background-dark;
+        }
 
         &-active{
             width: 140px;
             height: 50px;
             position: absolute;
-            // left: 10px;
             bottom: 10px;
             z-index: 0;
-            background-color: $color-primary;
             border-radius: 12px;
             transition-property: all;
-            transition-duration: 0.25s;      
+            transition-duration: 0.25s; 
+            
+            &.light {
+                background-color: $color-primary-light;
+            }
+
+            &.dark {
+                background-color: $color-primary-dark;
+            
+            }
         }
 
         &-item {
@@ -40,14 +63,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            // background-color: yellow;
             border-radius: 12px;
             cursor: pointer;
             transition: transform 0.5s ease, filter 0.5s ease;
             transform: scale(1);
 
-            &.active &_link {
-                color: $color-background;
+            &.active.light &_link {
+                color: $color-background-light;
+            }
+
+            &.active.dark &_link {
+                color: $color-background-light;
             }
 
             &_link {
@@ -59,21 +85,29 @@
                 justify-content: center;
                 align-items: center;
                 gap: 8px;
-                color: #1e293b99;
+                
+                &.light {
+                    color: $color-text-light;
+                }
+
+                &.dark {
+                    color:$color-text-navbar-dark;
+                }
 
                 .icon{
                     font-size: 1.5rem;
                 }
 
-            }
+            }   
         }
     }
 
    
 
     @media (max-width: $breakpoint-md) {
+
         &_list {
-            position: fixed;
+            // position: fixed;
 
             &-active {
                 width: 50px;
