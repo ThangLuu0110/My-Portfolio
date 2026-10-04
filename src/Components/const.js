@@ -5,30 +5,6 @@ import {
     FaSalesforce, 
     FaGithub 
 } from "react-icons/fa";
-import { 
-    GoHome, 
-    GoPerson, 
-    GoFileDirectory, 
-    GoArchive, 
-    GoDiscussionClosed, 
-    GoDeviceMobile,
-    GoBriefcase  
-} from "react-icons/go";
-
-const navItems = [
-    { name: "Home", path: "/", icon: <GoHome/> },
-    { name: "About", path: "/about", icon: <GoPerson/> },
-    { name: "Projects", path: "/projects", icon: <GoFileDirectory/> },
-    { name: "Skills", path: "/skills", icon: <GoArchive/>},
-    { name: "Experience", path: "/experience", icon: <GoBriefcase />},
-    { name: "Testimonials", path: "/testimonials", icon: <GoDiscussionClosed/>},
-    { name: "Contact", path: "/contact", icon: <GoDeviceMobile/>}
-];
-
-const navbarText = {
-    brand: "Lưu Mạnh Thắng",
-    contact: "Contact",
-};
 
 const heroSectionText = {
     heroSectionGreeting: "Hi, I'm Luu Manh Thang",
@@ -91,9 +67,7 @@ const footerText = {
     ]
 }
 
-export { 
-    navItems, 
-    navbarText, 
+export {
     heroSectionText,
     aboutMeText,
     informationCertificationList,
