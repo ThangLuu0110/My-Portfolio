@@ -1,10 +1,20 @@
 import React, { useEffect, useState, useContext } from "react";
 import { NavLink, useLocation } from 'react-router-dom';
-import { navItems } from "../../Components/const";
-import { ThemeContext } from '../../Store/ThemeContext'; 
+import { ThemeContext } from '../../Store/ThemeContext';
+import { useTranslation } from 'react-i18next';
+import { 
+    GoHome, 
+    GoPerson, 
+    GoFileDirectory, 
+    GoArchive, 
+    GoDiscussionClosed, 
+    GoDeviceMobile,
+    GoBriefcase  
+} from "react-icons/go";
 
 const Header = () => {
-    const context = useContext(ThemeContext)
+    const { t, i18n } = useTranslation();
+    const context = useContext(ThemeContext);
     const location = useLocation();
     const [activeIndex, setActiveIndex] = useState(0);
     const handleMoveActiveBox = (index) => {
@@ -50,6 +60,16 @@ const Header = () => {
                 break;
         }
     }, [location])
+
+    const navItems = [
+        { name: t('navbar.home'), path: "/", icon: <GoHome/> },
+        { name: t('navbar.about'), path: "/about", icon: <GoPerson/> },
+        { name: t('navbar.projects')    , path: "/projects", icon: <GoFileDirectory/> },
+        { name: t('navbar.skills'), path: "/skills", icon: <GoArchive/>},
+        { name: t('navbar.experience'), path: "/experience", icon: <GoBriefcase />},
+        { name: t('navbar.testimonials'), path: "/testimonials", icon: <GoDiscussionClosed/>},
+        { name: t('navbar.contact'), path: "/contact", icon: <GoDeviceMobile/>}
+    ];
 
     return (
         <header className="header_container">
