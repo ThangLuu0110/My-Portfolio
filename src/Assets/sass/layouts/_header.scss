@@ -1,12 +1,15 @@
 @use '../abstracts' as *;
 
-.header_container{
-    width: 1300px;
+// Navbar layout is mobile-first:
+//   < sm  : icon-only, items stretch to fill the screen width
+//   sm    : icon-only, a bit roomier, capped width
+//   md    : fixed-width items, icon stacked above a small label
+//   xl    : full desktop layout, icon + label side by side
+// --nav-count and --active-index are set inline by header.js.
 
-    @media (max-width: $breakpoint-md) {
-        width: 100%;
-    }
-
+.header_container {
+    width: 100%;
+    max-width: 1300px;
 }
 
 .navbar {
@@ -14,19 +17,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
     padding-top: 10px;
-    
+
     &_list {
+        --nav-pad: 6px;
+        --nav-gap: 4px;
+        --nav-item-h: 48px;
+        // Items share the list width equally; % resolves against the list's padding box.
+        --nav-item-w: calc((100% - 2 * var(--nav-pad) - (var(--nav-count) - 1) * var(--nav-gap)) / var(--nav-count));
+
+        box-sizing: border-box;
+        width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        gap: 10px;
-        margin-top: 10px;
-        padding: 10px;
+        gap: var(--nav-gap);
+        margin: 10px 0 0;
+        padding: var(--nav-pad);
+        list-style: none;
         border: 0.666667px solid #2563eb20;
         box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
-        border-radius: 16px;
+        border-radius: 14px;
         position: relative;
 
         &.light {
@@ -37,41 +47,38 @@
             background-color: $color-background-dark;
         }
 
-        &-active{
-            width: 140px;
-            height: 50px;
+        &-active {
+            width: var(--nav-item-w);
+            height: var(--nav-item-h);
             position: absolute;
-            bottom: 10px;
+            top: var(--nav-pad);
+            left: calc(var(--nav-pad) + var(--active-index) * (var(--nav-item-w) + var(--nav-gap)));
             z-index: 0;
-            border-radius: 12px;
-            transition-property: all;
-            transition-duration: 0.25s; 
-            
+            border-radius: 10px;
+            transition: left 0.25s ease, width 0.25s ease, opacity 0.2s ease;
+
+            &.hidden {
+                opacity: 0;
+            }
+
             &.light {
                 background-color: $color-primary-light;
             }
 
             &.dark {
                 background-color: $color-primary-dark;
-            
             }
         }
 
         &-item {
-            width: 140px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.5s ease, filter 0.5s ease;
-            transform: scale(1);
+            flex: 1 1 0;
+            min-width: 0;
+            height: var(--nav-item-h);
+            position: relative;
+            z-index: 1;
+            border-radius: 10px;
 
-            &.active.light &_link {
-                color: $color-background-light;
-            }
-
+            &.active.light &_link,
             &.active.dark &_link {
                 color: $color-background-light;
             }
@@ -79,52 +86,122 @@
             &_link {
                 width: 100%;
                 height: 100%;
-                font-size: 1rem;
-                font-weight: 500;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 8px;
-                
+                gap: 2px;
+                border-radius: inherit;
+                text-decoration: none;
+                transition: color 0.2s ease;
+
                 &.light {
                     color: $color-text-light;
                 }
 
                 &.dark {
-                    color:$color-text-navbar-dark;
+                    color: $color-text-navbar-dark;
                 }
 
-                .icon{
-                    font-size: 1.5rem;
+                &:focus-visible {
+                    outline: 2px solid $color-primary-light;
+                    outline-offset: 2px;
                 }
 
-            }   
-        }
-    }
+                .icon {
+                    display: flex;
+                    font-size: 1.25rem;
+                }
 
-   
-
-    @media (max-width: $breakpoint-md) {
-
-        &_list {
-            // position: fixed;
-
-            &-active {
-                width: 50px;
+                .text {
+                    display: none;
+                    max-width: 100%;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
             }
 
-            &-item {
-                width: 50px;
+            @media (hover: hover) {
+                &:not(.active) &_link:hover {
+                    &.light {
+                        color: $color-primary-light;
+                    }
 
-                &_link {
-
-                    .text {
-                        display: none;
+                    &.dark {
+                        color: $color-primary-dark;
                     }
                 }
             }
         }
-    }
 
-   
+        @include respond-to(sm) {
+            --nav-pad: 8px;
+            --nav-gap: 6px;
+            --nav-item-h: 50px;
+
+            max-width: 560px;
+            border-radius: 16px;
+
+            &-active,
+            &-item {
+                border-radius: 12px;
+            }
+
+            &-item_link .icon {
+                font-size: 1.35rem;
+            }
+        }
+
+        @include respond-to(md) {
+            --nav-item-h: 54px;
+            --nav-item-w: 84px;
+
+            width: auto;
+            max-width: none;
+
+            &-item {
+                flex: 0 0 var(--nav-item-w);
+
+                &_link {
+                    .icon {
+                        font-size: 1.25rem;
+                    }
+
+                    .text {
+                        display: block;
+                        font-size: 0.72rem;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+        @include respond-to(xl) {
+            --nav-pad: 10px;
+            --nav-gap: 10px;
+            --nav-item-h: 50px;
+            --nav-item-w: 140px;
+
+            &-item_link {
+                flex-direction: row;
+                gap: 8px;
+
+                .icon {
+                    font-size: 1.5rem;
+                }
+
+                .text {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar_list-active,
+    .navbar_list-item_link {
+        transition: none;
+    }
 }

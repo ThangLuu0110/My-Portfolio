@@ -1,9 +1,10 @@
 @use '../abstracts' as *;
 
-.certificateSection {
-    margin-top: 40px;
+.skillPage {
+    // margin-top: 40px;
+    height: calc(100vh - 130px);
     width: 100%;
-    padding-top: 10px;
+    // padding-top: 10px;
 
     &_certificate {
         display: flex;
