@@ -1,38 +1,67 @@
 @use '../abstracts' as *;
 
+// About layout is mobile-first:
+//   < sm  : one column, profile card on top at full width, story below
+//   sm    : same stack, card capped and centered, roomier sizes
+//   md    : same stack, larger title and padding
+//   lg    : two columns (card left, story right), centered in the viewport
+//   xl    : full desktop sizes
+// Each breakpoint only overrides the --about-* variables it needs.
+
 .aboutPage {
+    --about-gap: 28px;
+    --about-pad-y: 28px;
+    --about-card-w: 100%;
+    --about-card-pad: 24px 20px;
+    --about-radius: 16px;
+    --about-avatar: 120px;
+    --about-name: 1.3rem;
+    --about-role: 1.05rem;
+    --about-social: 44px;
+    --about-social-gap: 12px;
+    --about-title: 2rem;
+    --about-story-pad: 18px;
+
+    box-sizing: border-box;
     width: 100%;
-    height: calc(100vh - 130px);
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    gap: 40px;
+    gap: var(--about-gap);
+    padding: var(--about-pad-y) 0;
 
     &_card {
-        width: 400px;
-        height: 350px;
-        border-radius: 24px;
-        border: 0.666667px solid #2563eb20;
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+        box-sizing: border-box;
+        width: var(--about-card-w);
+        justify-self: center;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        padding: 20px;
+        padding: var(--about-card-pad);
+        text-align: center;
+        border: 0.666667px solid #2563eb20;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+        border-radius: var(--about-radius);
+
+        &.light {
+            background-color: $color-background-light;
+        }
 
         &.dark {
             background-color: #131b32;
         }
 
         &_image {
-            width: 160px;
-            height: 160px;
+            box-sizing: border-box;
+            width: var(--about-avatar);
+            aspect-ratio: 1;
+            margin-bottom: 16px;
+            border: 3px solid rgba(37, 99, 235, 0.19);
             border-radius: 50%;
             overflow: hidden;
-            margin-bottom: 20px;
-            border: 3px solid rgba(37, 99, 235, 0.19);
 
             img {
+                display: block;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -40,14 +69,23 @@
         }
 
         &_name {
-            font-size: 1.5rem;
+            margin: 0 0 6px;
+            font-size: var(--about-name);
             font-weight: bold;
-            margin-bottom: 10px;
+
+            &.light {
+                color: $color-secondary-light;
+            }
+
+            &.dark {
+                color: $color-secondary-dark;
+            }
         }
 
         &_title {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            margin: 0;
+            font-size: var(--about-role);
+            font-weight: 500;
 
             &.light {
                 color: $color-primary-light;
@@ -60,34 +98,57 @@
 
         &_social {
             margin-top: 20px;
-            &-list{
+
+            &-list {
                 display: flex;
                 flex-direction: row;
-                gap: 24px;
-                
-                &_item{
+                justify-content: center;
+                gap: var(--about-social-gap);
 
-                    &-link{
+                &_item {
+                    &-link {
+                        box-sizing: border-box;
+                        width: var(--about-social);
+                        height: var(--about-social);
                         display: flex;
-                        flex-direction: row;
-                        justify-content: space-between;
+                        justify-content: center;
                         align-items: center;
-                        gap: 5px;
+                        border: 0.666667px solid #2563eb20;
+                        border-radius: 10px;
+                        transition: border-color 0.2s ease;
+
+                        &:focus-visible {
+                            outline: 2px solid $color-primary-light;
+                            outline-offset: 2px;
+                        }
 
                         .icon {
+                            display: flex;
                             font-size: 1.3rem;
-                            
+                            transition: color 0.2s ease;
+
+                            &.light {
+                                color: $color-secondary-light;
+                            }
+
                             &.dark {
                                 color: $color-secondary-dark;
                             }
                         }
                     }
 
-                    &:hover {
-                        .icon {
-                            color: $color-primary-light;
-                        }
+                    @media (hover: hover) {
+                        &-link:hover {
+                            border-color: #2563eb60;
 
+                            .icon.light {
+                                color: $color-primary-light;
+                            }
+
+                            .icon.dark {
+                                color: $color-primary-dark;
+                            }
+                        }
                     }
                 }
             }
@@ -95,29 +156,37 @@
     }
 
     &_myStory {
-        margin: 50px 0;
+        min-width: 0;
 
         &_title {
-            font-size: 4rem;
+            margin: 0 0 16px;
+            font-size: var(--about-title);
             font-weight: bold;
-            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
 
             &.light {
                 color: $color-primary-light;
             }
+
             &.dark {
                 color: $color-primary-dark;
             }
         }
 
-
-
         &_story {
-            list-style-type: disc;
-            padding: 20px;
-            border-radius: 24px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: var(--about-story-pad);
             border: 0.666667px solid #2563eb20;
-            box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+            border-radius: var(--about-radius);
+
+            &.light {
+                background-color: $color-background-light;
+            }
 
             &.dark {
                 background-color: #131b32;
@@ -125,8 +194,7 @@
 
             &_item {
                 font-size: 1rem;
-                margin-bottom: 10px;
-                line-height: 1.5;
+                line-height: 1.6;
                 font-weight: 500;
 
                 &.light {
@@ -139,37 +207,82 @@
             }
 
             &_quote {
+                margin-top: 8px;
+                padding-left: 12px;
                 font-size: 1rem;
                 font-style: italic;
-                margin-top: 20px;
                 font-weight: 400;
+                line-height: 1.5;
 
                 &.light {
                     color: $color-text-light;
+                    border-left: 3px solid $color-primary-light;
                 }
 
                 &.dark {
                     color: $color-text-dark;
+                    border-left: 3px solid $color-primary-dark;
                 }
             }
         }
     }
 
-    @media (max-width: $breakpoint-md) {
-        grid-template-columns: 1fr 4fr;
-        gap: 20px;
-        height: auto;
-        padding: 20px;
+    @include respond-to(sm) {
+        --about-gap: 32px;
+        --about-pad-y: 36px;
+        --about-card-w: 420px;
+        --about-card-pad: 28px 24px;
+        --about-radius: 20px;
+        --about-avatar: 140px;
+        --about-name: 1.4rem;
+        --about-role: 1.1rem;
+        --about-social-gap: 16px;
+        --about-title: 2.5rem;
+        --about-story-pad: 22px;
 
-        &_card {
-            width: 100%;
-            height: auto;
+        &_card_social-list_item-link {
+            border-radius: 12px;
         }
+    }
 
-        &_myStory {
-            &_title {
-                font-size: 2.5rem;
-            }
+    @include respond-to(md) {
+        --about-gap: 40px;
+        --about-pad-y: 48px;
+        --about-title: 3rem;
+        --about-story-pad: 24px;
+
+        &_myStory_title {
+            margin-bottom: 20px;
         }
+    }
+
+    @include respond-to(lg) {
+        --about-pad-y: 24px;
+        --about-card-w: 320px;
+        --about-card-pad: 32px 24px;
+        --about-radius: 24px;
+        --about-avatar: 150px;
+
+        // 130px = header + footer, so the page fills the rest of the viewport.
+        min-height: calc(100vh - 130px);
+        grid-template-columns: var(--about-card-w) minmax(0, 1fr);
+    }
+
+    @include respond-to(xl) {
+        --about-gap: 56px;
+        --about-card-w: 400px;
+        --about-card-pad: 40px 28px;
+        --about-avatar: 160px;
+        --about-name: 1.5rem;
+        --about-role: 1.2rem;
+        --about-title: 4rem;
+        --about-story-pad: 28px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aboutPage_card_social-list_item-link,
+    .aboutPage_card_social-list_item-link .icon {
+        transition: none;
     }
 }

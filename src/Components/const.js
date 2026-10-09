@@ -27,9 +27,9 @@ const aboutMeText = {
         }
     ],
     listSocial: [
-        { icon: <FaLinkedin/>, link: 'https://www.linkedin.com/in/l%C6%B0u-m%E1%BA%A1nh-th%E1%BA%AFng-88b3b1257/' },
-        { icon: <FaSalesforce/>, link: 'https://www.salesforce.com/trailblazer/thangluumanh' },
-        { icon: <FaGithub/>, link: 'https://github.com/ThangLuu0110'}
+        { name: 'LinkedIn', icon: <FaLinkedin/>, link: 'https://www.linkedin.com/in/l%C6%B0u-m%E1%BA%A1nh-th%E1%BA%AFng-88b3b1257/' },
+        { name: 'Salesforce Trailblazer', icon: <FaSalesforce/>, link: 'https://www.salesforce.com/trailblazer/thangluumanh' },
+        { name: 'GitHub', icon: <FaGithub/>, link: 'https://github.com/ThangLuu0110'}
     ]
 };
 
