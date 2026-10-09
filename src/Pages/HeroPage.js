@@ -12,7 +12,7 @@ const HeroPage = () => {
         <section className="heroPage">
             <div className="heroPage_contentPart">
                 <p className={ `heroPage_contentPart_greeting ${context.theme}` }>{t("heroPage.greeting")}</p>
-                <p className={ `heroPage_contentPart_title ${context.theme}` }>{t("heroPage.title")}</p>
+                <h1 className={ `heroPage_contentPart_title ${context.theme}` }>{t("heroPage.title")}</h1>
                 <p className={ `heroPage_contentPart_description ${context.theme}` }>{t("heroPage.description")}</p>
                 <div className="heroPage_contentPart_buttons">
                     <NavLink to="/contact" className={ `heroPage_contentPart_buttons_contact ${context.theme}` }>{t("heroPage.contactMe")}</NavLink>
