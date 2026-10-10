@@ -6,7 +6,7 @@ import { ThemeContext } from '../Store/ThemeContext';
 
 
 const AboutPage = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const listStory = t("aboutPage.myStoryDescription", { returnObjects: true });
     const context = useContext(ThemeContext);
     

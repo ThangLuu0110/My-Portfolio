@@ -33,6 +33,10 @@ const resources = {
           "After two years, I am returning with renewed determination and a stronger drive to grow, ready to combine my existing experience with fresh perspectives as a Salesforce Developer.\""  
         ],
         myQuote: "\"Daily work is the foundation of competition\" - Ho Chi Minh"
+      },
+      skillPage: {
+        certificate: "Certificates",
+        skills: "Skills"
       }
     }
   },
@@ -64,6 +68,10 @@ const resources = {
           "Sau hai năm, tôi trở lại với quyết tâm mới và động lực phát triển mạnh mẽ hơn, sẵn sàng kết hợp những kinh nghiệm sẵn có cùng những góc nhìn mới mẻ trong vai trò lập trình viên Salesforce.\""  
         ],
         myQuote: "\"Công việc hàng ngày chính là nền tảng của thi đua\" - Hồ Chí Minh"
+      },
+      skillPage: {
+        certificate: "Các chứng chỉ",
+        skills: "Các kỹ năng"
       }
     }
   }
