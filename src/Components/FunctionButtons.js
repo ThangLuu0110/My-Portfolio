@@ -3,7 +3,7 @@ import { ThemeContext } from '../Store/ThemeContext';
 import { useTranslation } from 'react-i18next';
 
 const FunctionButtons = () => {
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
     const context = useContext(ThemeContext);
 
     return (

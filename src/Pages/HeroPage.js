@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 
 const HeroPage = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const context = useContext(ThemeContext);
     return (
         <section className="heroPage">

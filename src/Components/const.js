@@ -3,10 +3,14 @@ import SalesforceDevIILogo from '../Assets/images/SDP II logo.png';
 import { 
     FaLinkedin, 
     FaSalesforce, 
-    FaGithub 
+    FaGithub,
+    FaReact,
+    FaHtml5,
+    FaCss3Alt,
+    FaSass
 } from "react-icons/fa";
-
-
+import { FaBoltLightning } from "react-icons/fa6";
+import { IoLogoJavascript } from "react-icons/io5";
 
 const aboutMeText = {
     myExperienceTitle: "My Experience",
@@ -33,21 +37,33 @@ const aboutMeText = {
     ]
 };
 
-const informationCertificationList = [
-    {
-        certName: "Salesforce Certified Platform Developer",
-        certIssuedDate: "Dec 2022",
-        certImage: SalesforceDevILogo,
-        certIntro: "Understanding how to develop and deploy custom business logic and custom interfaces using the programmatic capabilities of the Lightning Platform."
-        
-    },
-    {
-        certName: "Salesforce Certified Platform Developer II",
-        certIssuedDate: "Jul 2023",
-        certImage: SalesforceDevIILogo,
-        certIntro: "Understanding the advanced programmatic capabilities of the Salesforce Platform, as well as using data modeling to develop complex business logic and interfaces."
-    }
-]
+const skillPageText = {
+    informationCertificationList : [
+        {
+            certName: "Salesforce Certified Platform Developer",
+            certIssuedDate: "Dec 2022",
+            certImage: SalesforceDevILogo,
+            certIntro: "Understanding how to develop and deploy custom business logic and custom interfaces using the programmatic capabilities of the Lightning Platform."
+            
+        },
+        {
+            certName: "Salesforce Certified Platform Developer II",
+            certIssuedDate: "Jul 2023",
+            certImage: SalesforceDevIILogo,
+            certIntro: "Understanding the advanced programmatic capabilities of the Salesforce Platform, as well as using data modeling to develop complex business logic and interfaces."
+        }
+    ],
+    skillsList : [
+        { name: "Salesforce Apex & SOQL", icon: <FaSalesforce color='#00b3f9'/>},
+        { name: "Lightning Web Components (LWC)", icon: <FaBoltLightning color="#1b96ff"/>},
+        { name: "HTML", icon: <FaHtml5 color="#f64d22"/>},
+        { name: "CSS", icon: <FaCss3Alt color="#0273b7"/>},
+        { name: "Sass", icon: <FaSass color="#c76395"/>},
+        { name: "JavaScript", icon: <IoLogoJavascript color="#f0d81e"/>},
+        { name: "React.js", icon: <FaReact color="#00cff2"/> }
+    ]
+
+}
 
 const footerText = {
     copyRight: 'Lưu Mạnh Thắng. All rights reserved.',
@@ -55,6 +71,6 @@ const footerText = {
 
 export {
     aboutMeText,
-    informationCertificationList,
+    skillPageText,
     footerText
 };

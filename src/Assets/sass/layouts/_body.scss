@@ -1,13 +1,6 @@
 @use '../abstracts' as *;
 
 .body_container{
+    width: 100%;
     max-width: 1300px;
-
-    @media (max-width: $breakpoint-lg) {
-        width: 100%;
-    }
-
-    @media (max-width: $breakpoint-md) {
-        width: 100%;
-    }
 }
