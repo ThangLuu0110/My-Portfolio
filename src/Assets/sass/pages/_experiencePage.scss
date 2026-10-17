@@ -1,98 +1,197 @@
 @use '../abstracts' as *;
 
+// Experience layout is mobile-first: a centered title above a vertical
+// timeline (line on the left, one dot and one card per entry).
+//   < sm  : narrow indent, compact cards
+//   sm    : wider indent, roomier sizes
+//   xl    : slightly larger body text
+// Page padding, viewport height and the title come from the shared
+// page-shell / page-title mixins, so they match the Skills page.
+// Each breakpoint only overrides the --exp-* variables it needs.
+
 .experiencePage {
-    margin: 50px 0;
+    --exp-indent: 28px;
+    --exp-dot: 16px;
+    --exp-item-gap: 24px;
+    --exp-radius: 16px;
+    --exp-card-pad: 20px;
+    --exp-role: 1.1rem;
+    --exp-text: 0.9rem;
+
+    @include page-shell;
 
     &_title {
-        font-size: 54px;
-        font-weight: bold;
-        color: $color-primary-light;
+        @include page-title;
     }
 
-    &_detail {
-        margin-top: 20px;
-        padding: 10px 20px;
+    &_timeline {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 768px;
+        margin: 0 auto;
+        padding-left: var(--exp-indent);
+        display: flex;
+        flex-direction: column;
+        gap: var(--exp-item-gap);
+        border-left: 2px solid;
+
+        &.light {
+            border-left-color: rgba($color-primary-light, 0.2);
+        }
+
+        &.dark {
+            border-left-color: rgba($color-primary-dark, 0.2);
+        }
 
         &_item {
-            display: grid;
-            grid-template-columns: 1fr 5fr;
-            font-size: 1.2rem;
-            color: $color-text-light;
-            font-weight: 400;
-            line-height: 30px;
-            margin-bottom: 50px;
+            position: relative;
 
+            &-dot {
+                position: absolute;
+                top: 24px;
+                // Centers the dot on the 2px timeline line.
+                left: calc(-1 * var(--exp-indent) - 1px - var(--exp-dot) / 2);
+                width: var(--exp-dot);
+                height: var(--exp-dot);
+                border-radius: 50%;
 
-            &-period {
-                font-weight: bold;
-                
+                &.light {
+                    background-color: $color-primary-light;
+                    box-shadow: 0 0 0 4px $color-background-light, 0 0 12px rgba($color-primary-light, 0.4);
+                }
+
+                &.dark {
+                    background-color: $color-primary-dark;
+                    box-shadow: 0 0 0 4px $color-background-dark, 0 0 12px rgba($color-primary-dark, 0.4);
+                }
             }
 
-            &-information {
+            &-card {
+                box-sizing: border-box;
+                padding: var(--exp-card-pad);
+                border: 0.666667px solid #2563eb20;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+                border-radius: var(--exp-radius);
+                transition: transform 0.2s ease, border-color 0.2s ease;
 
-                &_title {
+                &.light {
+                    background-color: $color-background-light;
+                }
+
+                &.dark {
+                    background-color: #131b32;
+                }
+
+                &_period {
+                    margin: 0;
+                    font-size: 0.75rem;
                     font-weight: bold;
+                    letter-spacing: 0.05em;
+                    text-transform: uppercase;
 
-                    .company {
+                    &.light {
                         color: $color-primary-light;
-                        font-size: 1rem;
+                    }
+
+                    &.dark {
+                        color: $color-primary-dark;
+                    }
+                }
+
+                &_role {
+                    margin: 8px 0 0;
+                    font-size: var(--exp-role);
+                    font-weight: bold;
+                    line-height: 1.3;
+
+                    &.light {
+                        color: $color-secondary-light;
+                    }
+
+                    &.dark {
+                        color: $color-secondary-dark;
+                    }
+                }
+
+                &_company {
+                    margin: 4px 0 0;
+                    font-size: var(--exp-text);
+                    font-weight: 600;
+
+                    &.light {
+                        color: $color-primary-light;
+                    }
+
+                    &.dark {
+                        color: $color-primary-dark;
+                    }
+                }
+
+                &_mission {
+                    margin: 12px 0 0;
+                    font-size: var(--exp-text);
+                    line-height: 1.6;
+
+                    &.light {
+                        color: $color-text-light;
+                    }
+
+                    &.dark {
+                        color: $color-text-dark;
                     }
                 }
 
                 &_technology {
                     display: flex;
                     flex-direction: row;
-                    justify-content: flex-start;
-                    gap: 10px;
-                    
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    margin-top: 16px;
+
                     &-tag {
-                        height: 20px;
-                        background-color:#6c757d;
-                        border-radius: 10px;
-                        color: #fff;
-                        font-size: 12px;
-                        font-weight: 700;
-                        line-height: 12px;
-                        padding: 4.2px 7.8px;
-                        text-align: center;
-                        line-height: 20px;
-                        margin-top: 10px;
+                        padding: 4px 10px;
+                        font-size: 0.75rem;
+                        font-weight: 500;
+                        line-height: 1.3;
+                        border: 0.666667px solid #2563eb20;
+                        border-radius: 6px;
+
+                        &.light {
+                            background-color: #daebff;
+                            color: $color-primary-light;
+                        }
+
+                        &.dark {
+                            background-color: rgba($color-primary-dark, 0.12);
+                            color: $color-primary-dark;
+                        }
                     }
                 }
-
             }
         }
     }
 
-    @media (max-width: $breakpoint-lg) {
-        &_detail {
-
-            &_item {
-                grid-template-columns: 1fr 4fr;
-            }
-            
+    @media (hover: hover) {
+        &_timeline_item-card:hover {
+            transform: translateY(-2px);
+            border-color: #2563eb60;
         }
     }
 
-    @media (max-width: $breakpoint-md) {
-        &_detail {
-
-            &_item {
-                display: flex;
-                flex-direction: column;
-
-                &-period {
-                    margin-bottom: 10px;
-                }
-            }
-            
-        }
+    @include respond-to(sm) {
+        --exp-indent: 40px;
+        --exp-item-gap: 32px;
+        --exp-card-pad: 24px;
+        --exp-role: 1.25rem;
     }
 
-    @media (max-width: $breakpoint-sm) {
-        &_title {
-            font-size: 44px;
-        }  
+    @include respond-to(xl) {
+        --exp-text: 0.95rem;
     }
-    
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .experiencePage_timeline_item-card {
+        transition: none;
+    }
 }

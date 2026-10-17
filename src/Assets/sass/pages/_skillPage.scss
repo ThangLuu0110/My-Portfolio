@@ -4,15 +4,12 @@
 //   < sm  : one column of certificate cards, skill chips wrap below
 //   sm    : same stack, roomier sizes
 //   md    : certificate cards sit side by side
-//   lg    : both sections centered in the viewport
+//   lg    : page fills the viewport below the header
 //   xl    : full desktop sizes
 // Each breakpoint only overrides the --skill-* variables it needs.
 
 .skillPage {
     --skill-gap: 36px;
-    --skill-pad-y: 28px;
-    --skill-title: 2rem;
-    --skill-title-gap: 16px;
     --skill-radius: 16px;
     --skill-card-pad: 16px;
     --skill-card-gap: 12px;
@@ -22,33 +19,15 @@
     --skill-chip-gap: 10px;
     --skill-chip-font: 0.9rem;
 
-    box-sizing: border-box;
-    width: 100%;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    align-content: center;
     gap: var(--skill-gap);
-    padding: var(--skill-pad-y) 0;
+    @include page-shell;
 
     &_certificate,
     &_skills {
         min-width: 0;
 
         &-title {
-            margin: 0 0 var(--skill-title-gap);
-            font-size: var(--skill-title);
-            font-weight: bold;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            text-align: center;
-
-            &.light {
-                color: $color-primary-light;
-            }
-
-            &.dark {
-                color: $color-primary-dark;
-            }
+            @include page-title;
         }
     }
 
@@ -180,9 +159,6 @@
 
     @include respond-to(sm) {
         --skill-gap: 44px;
-        --skill-pad-y: 36px;
-        --skill-title: 2.5rem;
-        --skill-title-gap: 20px;
         --skill-radius: 20px;
         --skill-card-pad: 20px;
         --skill-card-gap: 16px;
@@ -197,9 +173,6 @@
 
     @include respond-to(md) {
         --skill-gap: 52px;
-        --skill-pad-y: 48px;
-        --skill-title: 3rem;
-        --skill-title-gap: 24px;
         --skill-chip-h: 48px;
         --skill-chip-font: 0.95rem;
 
@@ -210,19 +183,13 @@
     }
 
     @include respond-to(lg) {
-        --skill-pad-y: 24px;
         --skill-card-pad: 24px;
         --skill-logo: 72px;
-        --skill-chip-gap: 16px;
-
-        // 130px = header + footer, so the page fills the rest of the viewport.
-        min-height: calc(100vh - 130px);
+        --skill-chip-gap: 16px;;
     }
 
     @include respond-to(xl) {
         --skill-gap: 64px;
-        --skill-title: 4rem;
-        --skill-title-gap: 30px;
         --skill-name: 1.15rem;
         --skill-chip-h: 50px;
         --skill-chip-font: 1rem;

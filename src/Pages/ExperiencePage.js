@@ -1,29 +1,38 @@
-import React from 'react';
-import { aboutMeText } from '../Components/const';
+import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ThemeContext } from '../Store/ThemeContext';
 
 const ExperienceSection = () => {
+    const { t } = useTranslation();
+    const context = useContext(ThemeContext);
+    const experienceDetailItems = t('experiencePage.detail', { returnObjects: true });
+
     return (
-        <div className="experiencePage">
-            <p className="experiencePage_title">{aboutMeText.myExperienceTitle}</p>
-            <ul className="experiencePage_detail">
-                {aboutMeText.myExperienceDetail.map((item, index) => (
-                    <li key={index} className="experiencePage_detail_item">
-                        <p className='experiencePage_detail_item-period'>{item.period}</p>
-                        <div className='experiencePage_detail_item-information'>
-                            <p className='experiencePage_detail_item-information_title'>{item.role} <span className='company'>@ {item.company}</span></p>
-                            <p className='experiencePage_detail_item-information_mission'>{item.mission}</p>
-                            <ul className='experiencePage_detail_item-information_technology'>
-                                {item.language.map((item, index) => (
-                                    <li key={index} className='experiencePage_detail_item-information_technology-tag'>
-                                        {item}
+        <section className="experiencePage">
+            <h1 className={`experiencePage_title ${context.theme}`}>{t('experiencePage.title')}</h1>
+            <ol className={`experiencePage_timeline ${context.theme}`}>
+                {experienceDetailItems.map((item, index) => (
+                    <li key={index} className="experiencePage_timeline_item">
+                        <span className={`experiencePage_timeline_item-dot ${context.theme}`} aria-hidden="true"></span>
+                        <div className={`experiencePage_timeline_item-card ${context.theme}`}>
+                            <p className={`experiencePage_timeline_item-card_period ${context.theme}`}>{item.period}</p>
+                            <h2 className={`experiencePage_timeline_item-card_role ${context.theme}`}>{item.role}</h2>
+                            <p className={`experiencePage_timeline_item-card_company ${context.theme}`}>{item.company}</p>
+                            {item.mission && (
+                                <p className={`experiencePage_timeline_item-card_mission ${context.theme}`}>{item.mission}</p>
+                            )}
+                            <ul className="experiencePage_timeline_item-card_technology">
+                                {item.language.map((language, languageIndex) => (
+                                    <li key={languageIndex} className={`experiencePage_timeline_item-card_technology-tag ${context.theme}`}>
+                                        {language}
                                     </li>
                                 ))}
                             </ul>
                         </div>
                     </li>
                 ))}
-            </ul>
-        </div>
+            </ol>
+        </section>
     )
 }
 

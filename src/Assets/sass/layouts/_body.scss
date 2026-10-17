@@ -1,6 +1,11 @@
 @use '../abstracts' as *;
 
+// Takes all the height the header and footer leave, and lets the page
+// inside stretch into it (pages opt in with `flex: 1 0 auto`).
 .body_container{
     width: 100%;
     max-width: 1300px;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
 }
