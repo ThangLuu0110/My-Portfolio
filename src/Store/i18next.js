@@ -37,6 +37,25 @@ const resources = {
       skillPage: {
         certificate: "Certificates",
         skills: "Skills"
+      },
+      experiencePage: {
+        title: "Experience",
+        detail: [
+          {
+            period: "Mar - Aug 2022",
+            role: "Intern Frontend Developer",
+            mission: "Built and maintained website user interfaces, fixed bugs, and implemented design changes based on feedback from senior developers or designers.",
+            language: ["HTML & CSS", "JavaScript", "TypeScript", "React"],
+            company: "VTI Vietnam"
+          },
+          {
+            period: "Aug 2022 - 2025",
+            role: "Salesforce Developer",
+            mission: "Developed business logic combining declarative configuration and Apex programming, built user interfaces with LWC, wrote unit tests, integrated Salesforce with external systems via REST APIs, and deployed metadata across environments using Salesforce CLI, Change Sets, and Git.",
+            language: ["Salesforce Apex & SOQL", "JavaScript", "Lightning Web Components (LWC)"],
+            company: "VTI Vietnam"
+          }
+        ]
       }
     }
   },
@@ -72,6 +91,25 @@ const resources = {
       skillPage: {
         certificate: "Các chứng chỉ",
         skills: "Các kỹ năng"
+      },
+      experiencePage: {
+        title: "Kinh nghiệm",
+        detail: [
+          {
+            period: "Tháng 3 - Tháng 8 2022",
+            role: "Lập trình viên Frontend (Thực tập sinh)",
+            mission: "Xây dựng và duy trì giao diện người dùng cho trang web, sửa lỗi, cũng như triển khai các thay đổi về thiết kế dựa trên phản hồi từ các lập trình viên hoặc nhà thiết kế cấp cao.",
+            language: ["HTML & CSS", "JavaScript", "TypeScript", "React"],
+            company: "VTI Vietnam"
+          },
+          {
+            period: "Tháng 8 2022 - 2025",
+            role: "Lập trình viên Salesforce",
+            mission: "Phát triển logic kết hợp giữa cấu hình và lập trình bằng Apex, xây dựng giao diện bằng LWC, viết Unit Test, tích hợp Salesforce với các hệ thống bên ngoài qua REST API,..., và triển khai Metadata giữa các môi trường qua Salesforce CLI, Change Set và Git.",
+            language: ["Salesforce Apex & SOQL", "JavaScript", "Lightning Web Components (LWC)"],
+            company: "VTI Vietnam"
+          }
+        ]
       }
     }
   }

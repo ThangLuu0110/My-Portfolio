@@ -13,23 +13,6 @@ import { FaBoltLightning } from "react-icons/fa6";
 import { IoLogoJavascript } from "react-icons/io5";
 
 const aboutMeText = {
-    myExperienceTitle: "My Experience",
-    myExperienceDetail: [
-        {
-            period: "Mar - Aug 2022",
-            role: "Intern Frontend Developer",
-            mission: "Built and maintained website user interfaces, fixed bugs, and implemented design changes based on feedback from senior developers or designers.",
-            language: ["HTML & CSS", "JavaScript", "TypeScript", "React"],
-            company: "VTI Vietnam"
-        },
-        {
-            period: "2022 - 2025",
-            role: "Salesforce Developer",
-            mission: "",
-            language: ["Salesforce Apex & SOQL", "JavaScript", "Lightning Web Components (LWC)"],
-            company: "VTI Vietnam"
-        }
-    ],
     listSocial: [
         { name: 'LinkedIn', icon: <FaLinkedin/>, link: 'https://www.linkedin.com/in/l%C6%B0u-m%E1%BA%A1nh-th%E1%BA%AFng-88b3b1257/' },
         { name: 'Salesforce Trailblazer', icon: <FaSalesforce/>, link: 'https://www.salesforce.com/trailblazer/thangluumanh' },

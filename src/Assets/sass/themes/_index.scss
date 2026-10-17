@@ -1,6 +1,10 @@
 @use '../abstracts' as *;
 
 .myPortfolio {
+    box-sizing: border-box;
+    // Fill the whole screen so no bare <body> shows under the footer.
+    min-height: 100vh;
+    min-height: 100dvh;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;

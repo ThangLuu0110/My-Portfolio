@@ -19,3 +19,63 @@
     }
   }
 }
+
+// Shared shell for pages with a big section title (Skills, Experience...).
+// Content is anchored to the top, not centered, so the title sits at the
+// same spot on every page no matter how tall the content below it is.
+@mixin page-shell {
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  padding: 28px 0;
+  // Grow into the space .body_container leaves between header and footer.
+  flex: 1 0 auto;
+
+  @include respond-to(sm) {
+    padding: 36px 0;
+  }
+
+  @include respond-to(md) {
+    padding: 48px 0;
+  }
+
+  @include respond-to(lg) {
+    padding: 40px 0;
+  }
+}
+
+// Shared section title, so every page heading has the same size, line box
+// and spacing below it.
+@mixin page-title {
+  margin: 0 0 24px;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-align: center;
+
+  &.light {
+    color: $color-primary-light;
+  }
+
+  &.dark {
+    color: $color-primary-dark;
+  }
+
+  @include respond-to(sm) {
+    margin-bottom: 32px;
+    font-size: 2.5rem;
+  }
+
+  @include respond-to(md) {
+    margin-bottom: 40px;
+    font-size: 3rem;
+  }
+
+  @include respond-to(xl) {
+    margin-bottom: 48px;
+    font-size: 4rem;
+  }
+}
