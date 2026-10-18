@@ -185,7 +185,7 @@
     @include respond-to(lg) {
         --skill-card-pad: 24px;
         --skill-logo: 72px;
-        --skill-chip-gap: 16px;;
+        --skill-chip-gap: 16px;
     }
 
     @include respond-to(xl) {
