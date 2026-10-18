@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
+
 // the translations
 // (tip move them in a JSON file and import them,
 // or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
@@ -56,6 +57,13 @@ const resources = {
             company: "VTI Vietnam"
           }
         ]
+      },
+      contactPage: {
+        title: 'Get In Touch',
+        phone: "Phone",
+        location: "Location",
+        locationDetail: "Nghia Do, Hanoi, Vietnam",
+        sendingEmail: "Sending Email"
       }
     }
   },
@@ -110,6 +118,13 @@ const resources = {
             company: "VTI Vietnam"
           }
         ]
+      },
+      contactPage: {
+        title: 'Liên hệ',
+        phone: "Số điện thoại",
+        location: "Địa chỉ",
+        locationDetail: "Nghĩa Đô, Hà Nội, Việt Nam",
+        sendingEmail: "Gửi Email"
       }
     }
   }

@@ -1,0 +1,215 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
+// Contact layout is mobile-first: a centered title above a single column of
+// contact cards (icon left, label + value right), with the email button below.
+//   < sm  : full-width cards, compact sizes
+//   sm    : list capped and centered, roomier sizes
+//   md    : wider list, larger icons
+//   xl    : full desktop sizes
+// Page padding, viewport height and the title come from the shared
+// page-shell / page-title mixins, so they match the Skills and Experience pages.
+// Each breakpoint only overrides the --contact-* variables it needs.
+
+.contactPage {
+    --contact-list-w: 100%;
+    --contact-list-gap: 12px;
+    --contact-radius: 16px;
+    --contact-item-pad: 14px 16px;
+    --contact-item-gap: 14px;
+    --contact-icon: 44px;
+    --contact-icon-font: 1.2rem;
+    --contact-name: 0.85rem;
+    --contact-value: 1rem;
+    --contact-btn-h: 48px;
+    --contact-btn-radius: 10px;
+
+    @include page-shell;
+
+    &_title {
+        @include page-title;
+    }
+
+    &_list {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: var(--contact-list-w);
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--contact-list-gap);
+
+        &-item {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: var(--contact-item-gap);
+            padding: var(--contact-item-pad);
+            border: 0.666667px solid #2563eb20;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+            border-radius: var(--contact-radius);
+            transition: border-color 0.2s ease;
+
+            &.light {
+                background-color: $color-background-light;
+            }
+
+            &.dark {
+                background-color: #131b32;
+            }
+
+            &_icon {
+                flex-shrink: 0;
+                width: var(--contact-icon);
+                height: var(--contact-icon);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: var(--contact-icon-font);
+                border-radius: 10px;
+
+                &.light {
+                    background-color: $color-primary-light;
+                    color: $color-background-light;
+                }
+
+                &.dark {
+                    background-color: $color-primary-dark;
+                    color: $color-background-dark;
+                }
+            }
+
+            &_detail {
+                min-width: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 4px;
+
+                &-name {
+                    margin: 0;
+                    font-size: var(--contact-name);
+                    font-weight: 500;
+
+                    &.light {
+                        color: $color-text-light;
+                    }
+
+                    &.dark {
+                        color: $color-text-dark;
+                    }
+                }
+
+                &-value {
+                    margin: 0;
+                    font-size: var(--contact-value);
+                    font-weight: bold;
+                    line-height: 1.35;
+                    // Keeps the long email address from overflowing narrow cards.
+                    overflow-wrap: anywhere;
+
+                    &.light {
+                        color: $color-secondary-light;
+                    }
+
+                    &.dark {
+                        color: $color-secondary-dark;
+                    }
+                }
+            }
+        }
+    }
+
+    &_email {
+        box-sizing: border-box;
+        justify-self: center;
+        height: var(--contact-btn-h);
+        margin-top: 24px;
+        padding: 0 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        white-space: nowrap;
+        border: 1px solid transparent;
+        border-radius: var(--contact-btn-radius);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+        transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline: 2px solid $color-primary-light;
+            outline-offset: 2px;
+        }
+
+        &.light {
+            background-color: $color-primary-light;
+            border-color: $color-primary-light;
+            color: $color-background-light;
+        }
+
+        &.dark {
+            background-color: $color-primary-dark;
+            border-color: $color-primary-dark;
+            color: $color-background-dark;
+        }
+    }
+
+    @media (hover: hover) {
+        &_list-item:hover {
+            border-color: #2563eb60;
+        }
+
+        &_email:hover {
+            &.light {
+                background-color: color.adjust($color-primary-light, $lightness: -10%);
+                border-color: color.adjust($color-primary-light, $lightness: -10%);
+            }
+
+            &.dark {
+                background-color: color.adjust($color-primary-dark, $lightness: -10%);
+                border-color: color.adjust($color-primary-dark, $lightness: -10%);
+            }
+        }
+    }
+
+    @include respond-to(sm) {
+        --contact-list-w: 480px;
+        --contact-list-gap: 16px;
+        --contact-radius: 20px;
+        --contact-item-pad: 18px 20px;
+        --contact-item-gap: 16px;
+        --contact-btn-radius: 12px;
+    }
+
+    @include respond-to(md) {
+        --contact-list-w: 560px;
+        --contact-icon: 48px;
+        --contact-icon-font: 1.3rem;
+        --contact-btn-h: 50px;
+
+        &_email {
+            margin-top: 32px;
+        }
+    }
+
+    @include respond-to(xl) {
+        --contact-list-w: 600px;
+        --contact-item-pad: 20px 24px;
+        --contact-icon: 52px;
+        --contact-name: 0.9rem;
+        --contact-value: 1.1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contactPage_list-item,
+    .contactPage_email {
+        transition: none;
+    }
+}
