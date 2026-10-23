@@ -22,7 +22,9 @@ const resources = {
         title: "Salesforce Developer",
         description: "I am a Salesforce Developer with 3 years of experience designing and implementing scalable solutions on the Salesforce platform, specializing in Apex, Lightning Web Components, and process automation.",
         contactMe: "Contact Me",
-        browseProjects: "Browse Projects"
+        browseProjects: "Browse Projects",
+        badgeYears: "Years",
+        badgeExperience: "Experience"
       },
       aboutPage: {
         name: "Luu Manh Thang",
@@ -83,7 +85,9 @@ const resources = {
         title: "Salesforce Developer",
         description: "Tôi là Lập trình viên Salesforce với 3 năm kinh nghiệm trong việc thiết kế và triển khai các giải pháp có khả năng mở rộng trên nền tảng Salesforce, chuyên sâu về Apex, Lightning Web Components và tự động hóa quy trình.",
         contactMe: "Liên hệ với tôi",
-        browseProjects: "Tìm hiểu các dự án"
+        browseProjects: "Tìm hiểu các dự án",
+        badgeYears: "Năm",
+        badgeExperience: "Kinh nghiệm"
       },
       aboutPage: {
         name: "Lưu Mạnh Thắng",
