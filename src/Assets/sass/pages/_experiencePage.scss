@@ -28,19 +28,32 @@
         box-sizing: border-box;
         width: 100%;
         max-width: 768px;
+        position: relative;
         margin: 0 auto;
-        padding-left: var(--exp-indent);
+        // + 2px leaves room for the timeline line drawn by ::before.
+        padding-left: calc(var(--exp-indent) + 2px);
         display: flex;
         flex-direction: column;
         gap: var(--exp-item-gap);
-        border-left: 2px solid;
 
-        &.light {
-            border-left-color: rgba($color-primary-light, 0.2);
+        // The timeline line. A pseudo-element (not a border) so it can draw
+        // downward on entrance.
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            transform-origin: top;
         }
 
-        &.dark {
-            border-left-color: rgba($color-primary-dark, 0.2);
+        &.light::before {
+            background-color: rgba($color-primary-light, 0.2);
+        }
+
+        &.dark::before {
+            background-color: rgba($color-primary-dark, 0.2);
         }
 
         &_item {
@@ -190,8 +203,31 @@
     }
 }
 
+// Entrance: the title rises, the timeline line draws downward, and each
+// entry (dot + card) rises in order as the line reaches it.
+// The whole item animates, not the card, so the card's hover lift still works.
+.experiencePage {
+    &_title {
+        @include entrance(.05s);
+    }
+
+    &_timeline::before {
+        @include entrance(.15s, page-draw, 1.2s);
+    }
+
+    &_timeline_item {
+        @include stagger(6, .25s, .15s);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .experiencePage_timeline_item-card {
         transition: none;
+    }
+
+    .experiencePage_title,
+    .experiencePage_timeline::before,
+    .experiencePage_timeline_item {
+        animation: none;
     }
 }

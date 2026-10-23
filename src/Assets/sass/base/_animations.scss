@@ -1,0 +1,23 @@
+// Keyframes for the page entrance animations (see the entrance and
+// stagger mixins in abstracts/_mixins.scss).
+
+@keyframes page-rise {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+}
+
+@keyframes page-settle {
+    from {
+        opacity: 0;
+        transform: scale(.92);
+    }
+}
+
+// Grows a vertical line from its top edge.
+@keyframes page-draw {
+    from {
+        transform: scaleY(0);
+    }
+}
