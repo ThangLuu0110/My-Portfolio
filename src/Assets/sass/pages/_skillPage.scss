@@ -196,9 +196,36 @@
     }
 }
 
+// Entrance: each title rises, then its cards follow one by one. The skill
+// chips use a shorter step so the whole row lands as a quick wave.
+.skillPage {
+    &_certificate-title {
+        @include entrance(.05s);
+    }
+
+    &_certificate-list_item {
+        @include stagger(6, .15s, .1s);
+    }
+
+    &_skills-title {
+        @include entrance(.3s);
+    }
+
+    &_skills-list_item {
+        @include stagger(12, .4s, .04s);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .skillPage_certificate-list_item,
     .skillPage_skills-list_item {
         transition: none;
+    }
+
+    .skillPage_certificate-title,
+    .skillPage_certificate-list_item,
+    .skillPage_skills-title,
+    .skillPage_skills-list_item {
+        animation: none;
     }
 }

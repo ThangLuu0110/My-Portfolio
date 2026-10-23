@@ -207,9 +207,31 @@
     }
 }
 
+// Entrance: the title rises, the contact cards follow in order, and the
+// email button lands last.
+.contactPage {
+    &_title {
+        @include entrance(.05s);
+    }
+
+    &_list-item {
+        @include stagger(6, .15s, .08s);
+    }
+
+    &_email {
+        @include entrance(.45s);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .contactPage_list-item,
     .contactPage_email {
         transition: none;
+    }
+
+    .contactPage_title,
+    .contactPage_list-item,
+    .contactPage_email {
+        animation: none;
     }
 }

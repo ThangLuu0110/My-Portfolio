@@ -79,3 +79,23 @@
     font-size: 4rem;
   }
 }
+
+// Entrance motion shared by every page. The keyframes (page-rise,
+// page-settle, page-draw) live in base/_animations.scss.
+// `backwards` holds the start frame during the delay but lets go once the
+// animation ends, so hover transforms keep working afterwards.
+@mixin entrance($delay: 0s, $name: page-rise, $duration: .8s) {
+  animation: $name $duration $ease-out $delay backwards;
+}
+
+// Use on a list item: item n starts at $start + (n - 1) * $step.
+// Items past $count share the last delay, so a longer list still animates.
+@mixin stagger($count, $start: 0s, $step: .08s, $name: page-rise, $duration: .8s) {
+  @include entrance($start + $count * $step, $name, $duration);
+
+  @for $i from 1 through $count {
+    &:nth-child(#{$i}) {
+      animation-delay: $start + ($i - 1) * $step;
+    }
+  }
+}

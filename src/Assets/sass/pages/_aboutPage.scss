@@ -280,9 +280,56 @@
     }
 }
 
+// Entrance: the profile card settles in and its contents rise in reading
+// order, while the story title and box rise alongside it. The quote lands last.
+.aboutPage {
+    &_card {
+        @include entrance(0s, page-settle, 1.2s);
+    }
+
+    &_card_image {
+        @include entrance(.15s);
+    }
+
+    &_card_name {
+        @include entrance(.23s);
+    }
+
+    &_card_title {
+        @include entrance(.31s);
+    }
+
+    &_card_social {
+        @include entrance(.39s);
+    }
+
+    &_myStory_title {
+        @include entrance(.2s);
+    }
+
+    &_myStory_story {
+        @include entrance(.3s);
+    }
+
+    &_myStory_story_quote {
+        @include entrance(.6s);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .aboutPage_card_social-list_item-link,
     .aboutPage_card_social-list_item-link .icon {
         transition: none;
+    }
+
+    .aboutPage_card,
+    .aboutPage_card_image,
+    .aboutPage_card_name,
+    .aboutPage_card_title,
+    .aboutPage_card_social,
+    .aboutPage_myStory_title,
+    .aboutPage_myStory_story,
+    .aboutPage_myStory_story_quote {
+        animation: none;
     }
 }
