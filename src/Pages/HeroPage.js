@@ -21,9 +21,22 @@ const HeroPage = () => {
             </div>
 
             <div className="heroPage_imagePart">
-                <div className={ `heroPage_imagePart-border ${context.theme}` }>
-                    <div className="heroPage_imagePart-border_image">
-                        <img src={profileImage} alt="Hero" />
+                <div className={ `heroPage_imagePart-disc ${context.theme}` }>
+                    <div className="heroPage_imagePart-stage">
+                        <span className="heroPage_imagePart-ring heroPage_imagePart-ring--outer" aria-hidden="true">
+                            <span className="heroPage_imagePart-ring_dot" />
+                        </span>
+                        <span className="heroPage_imagePart-ring heroPage_imagePart-ring--inner" aria-hidden="true" />
+                        <div className="heroPage_imagePart-photo">
+                            <img src={profileImage} alt="Thang Luu" />
+                        </div>
+                    </div>
+                    <div className={ `heroPage_imagePart-badge ${context.theme}` }>
+                        <span className="heroPage_imagePart-badge_value">3+</span>
+                        <span className="heroPage_imagePart-badge_label">
+                            <span>{t("heroPage.badgeYears")}</span>
+                            <span>{t("heroPage.badgeExperience")}</span>
+                        </span>
                     </div>
                 </div>
             </div>
